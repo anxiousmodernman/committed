@@ -1,0 +1,9 @@
+
+# ignore this
+
+.idea
+*sublime-*
+*.pyc
+*.db
+*.sqlite3
+__pycache__
