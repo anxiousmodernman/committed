@@ -13,6 +13,7 @@ class Repository(models.Model):
 class Commit(models.Model):
     sha1hash = models.CharField(max_length=250)
     timestamp = models.DateTimeField()
+    message = models.CharField(max_length=1000)
     repository = models.ForeignKey(Repository)
     # todo foreign key to repository
 
