@@ -7,7 +7,7 @@ class GithubUser(models.Model):
 
 class Repository(models.Model):
     name = models.CharField(max_length=100)
-    # todo foreign key to user
+    githubuser = models.ForeignKey(GithubUser)
 
 
 class Commit(models.Model):
@@ -15,6 +15,4 @@ class Commit(models.Model):
     timestamp = models.DateTimeField()
     message = models.CharField(max_length=1000, null=True)
     repository = models.ForeignKey(Repository)
-    # todo foreign key to repository
-
 

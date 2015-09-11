@@ -1,5 +1,6 @@
 from django.test import TestCase
 from stats_app.serializers import GithubUserSerializer
+from stats_app.service import get_user_token
 
 
 class GetDataTestCase(TestCase):
@@ -7,9 +8,8 @@ class GetDataTestCase(TestCase):
     def setup(self):
         token = ""
 
-    def test_request(self):
-        # todo get data make model objects save them
-        print("hello world")
+    def test_get_user_token(self):
+        get_user_token()
 
 
 class SerializerTestCase(TestCase):
@@ -17,3 +17,5 @@ class SerializerTestCase(TestCase):
     def test_print_serializer(self):
         serializer = GithubUserSerializer()
         print(repr(serializer))
+
+

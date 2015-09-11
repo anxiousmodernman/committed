@@ -6,4 +6,3 @@ class GithubUserSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = GithubUser
-
