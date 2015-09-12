@@ -113,7 +113,7 @@ STATICFILES_DIRS = (os.path.join(BASE_DIR, "static"),)
 
 # python-social-auth
 # http://psa.matiasaguirre.net/docs/configuration/settings.html
-SOCIAL_AUTH_AUTHENTICATION_BACKENDS = (
+AUTHENTICATION_BACKENDS = (
     'social.backends.github.GithubOAuth2',
     'django.contrib.auth.backends.ModelBackend',
 )
