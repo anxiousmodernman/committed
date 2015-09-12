@@ -56,6 +56,8 @@ def githubrepository_to_model(json):
     else:
         sys.exit("serialization failed!")
 
+#todo GIVE DICT LIKE RESPONSES TO sqlitedb via MODELS, SERIALIZE
+
 
 def get_repository_list(username):
     req = requests.get(urljoin(GITHUB_API + 'users/', str(username) + '/repos')) # todo, just use + ?
