@@ -37,6 +37,7 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'social.apps.django_app.default',
     'main',
     'stats_app',
     'rest_framework',
@@ -66,10 +67,16 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'social.apps.django_app.context_processors.backends',
+                'social.apps.django_app.context_processors.login_redirect',
             ],
         },
     },
 ]
+
+# http://psa.matiasaguirre.net/docs/configuration/django.html#template-context-processors
+# Separate context processors were deprecated in Django 1.8, so I moved them into TEMPLATES:OPTIONS:context_processors
+# TEMPLATE_CONTEXT_PROCESSORS = ()
 
 WSGI_APPLICATION = 'committed.wsgi.application'
 
@@ -103,5 +110,16 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.8/howto/static-files/
 
 STATIC_URL = '/static/'
-STATICFILES_DIRS = (os.path.join(BASE_DIR, "static"))
+STATICFILES_DIRS = (os.path.join(BASE_DIR, "static"),)
 
+
+# python-social-auth
+# http://psa.matiasaguirre.net/docs/configuration/settings.html
+SOCIAL_AUTH_AUTHENTICATION_BACKENDS = (
+    'social.backends.github.GithubOAuth2',
+    'django.contrib.auth.backends.ModelBackend',
+)
+
+# TODO reset these before deployment
+SOCIAL_AUTH_GITHUB_KEY = '0ab9f627acc9ae4bcc13'
+SOCIAL_AUTH_GITHUB_SECRET = '7052642e4850f568caad59ceb47f578ee309d5d3'
