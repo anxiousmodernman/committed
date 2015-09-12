@@ -11,30 +11,19 @@ class Migration(migrations.Migration):
 
     operations = [
         migrations.CreateModel(
-            name='Commit',
-            fields=[
-                ('id', models.AutoField(verbose_name='ID', auto_created=True, primary_key=True, serialize=False)),
-                ('sha1hash', models.CharField(max_length=250)),
-                ('timestamp', models.DateTimeField()),
-            ],
-        ),
-        migrations.CreateModel(
             name='GithubUser',
             fields=[
-                ('id', models.AutoField(verbose_name='ID', auto_created=True, primary_key=True, serialize=False)),
-                ('username', models.CharField(max_length=50)),
+                ('id', models.AutoField(primary_key=True, auto_created=True, serialize=False, verbose_name='ID')),
+                ('username', models.CharField(default='ahelium', max_length=50)),
             ],
         ),
         migrations.CreateModel(
             name='Repository',
             fields=[
-                ('id', models.AutoField(verbose_name='ID', auto_created=True, primary_key=True, serialize=False)),
-                ('name', models.CharField(max_length=100)),
+                ('id', models.AutoField(primary_key=True, auto_created=True, serialize=False, verbose_name='ID')),
+                ('name', models.CharField(default='rec-engine-sb', max_length=100)),
+                ('description', models.CharField(default='SB Rec Engine', max_length=500)),
+                ('githubuser', models.ForeignKey(to='stats_app.GithubUser')),
             ],
-        ),
-        migrations.AddField(
-            model_name='commit',
-            name='repository',
-            field=models.ForeignKey(to='stats_app.Repository'),
         ),
     ]
