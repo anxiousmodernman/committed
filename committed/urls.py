@@ -11,6 +11,9 @@ urlpatterns = patterns('',
     url(r'^$', 'main.views.hello', name='committed_home')
 )
 
+
+# NOTE: we are taking the "more control" approach documented here:
+# https://docs.djangoproject.com/en/1.8/topics/auth/default/#module-django.contrib.auth.views
 urlpatterns += patterns(
     'django.contrib.auth.views',
 

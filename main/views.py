@@ -1,4 +1,6 @@
 from django.shortcuts import render
+from committed import settings
+from django.shortcuts import redirect
 
 # Create your views here.
 
@@ -8,10 +10,9 @@ def hello(request):
 
 
 def github_login(request):
-    pass
     return render(request, "main/home.html")
 
 
 def logout(request):
-    # return HttpResponse("Thanks for logging out")
-    pass
+    logout(request)
+    return redirect('%s?next=%s' % (settings.LOGIN_URL, request.path))

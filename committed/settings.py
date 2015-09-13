@@ -17,7 +17,7 @@ ALLOWED_HOSTS = []
 INSTALLED_APPS = (
     'django.contrib.admin',
     'django.contrib.auth',
-    'django.contrib.contenttypes',   # see https://docs.djangoproject.com/en/1.8/ref/contrib/contenttypes/
+    'django.contrib.contenttypes',  # see https://docs.djangoproject.com/en/1.8/ref/contrib/contenttypes/
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
@@ -108,8 +108,10 @@ SOCIAL_AUTH_GITHUB_SECRET = '7052642e4850f568caad59ceb47f578ee309d5d3'
 
 FIELDS_STORED_IN_SESSION = ['access_token']
 
-
 SOCIAL_AUTH_LOGIN_REDIRECT_URL = '/user/home/'
+
+LOGIN_URL = '/login'
+LOGIN_REDIRECT_URL = '/user/home/'
 
 
 
