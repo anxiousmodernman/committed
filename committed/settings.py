@@ -38,6 +38,7 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'social.apps.django_app.default',
+    'django_extensions',
     'main',
 )
 
@@ -57,7 +58,7 @@ ROOT_URLCONF = 'committed.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': ['templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -110,7 +111,6 @@ USE_TZ = True
 STATIC_URL = '/static/'
 STATICFILES_DIRS = (os.path.join(BASE_DIR, "static"),)
 
-
 # python-social-auth
 # http://psa.matiasaguirre.net/docs/configuration/settings.html
 AUTHENTICATION_BACKENDS = (
@@ -121,3 +121,14 @@ AUTHENTICATION_BACKENDS = (
 # TODO reset these before deployment
 SOCIAL_AUTH_GITHUB_KEY = '0ab9f627acc9ae4bcc13'
 SOCIAL_AUTH_GITHUB_SECRET = '7052642e4850f568caad59ceb47f578ee309d5d3'
+
+FIELDS_STORED_IN_SESSION = ['access_token']
+
+
+SOCIAL_AUTH_LOGIN_REDIRECT_URL = '/user/home/'
+
+
+
+
+
+
