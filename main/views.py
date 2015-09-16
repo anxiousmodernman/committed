@@ -6,11 +6,7 @@ from django.shortcuts import redirect
 
 
 def hello(request):
-    return render(request, "main/home.html")  # todo you can give a context here
-
-
-def github_login(request):
-    return render(request, "main/home.html")
+    return render(request, "main/begin.html")  # todo you can give a context here
 
 
 def logout(request):

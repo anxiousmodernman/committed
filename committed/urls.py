@@ -7,7 +7,6 @@ urlpatterns = patterns('',
     url(r'^admin/', include(admin.site.urls)),
     url(r'^user/', include('user.urls')),
     url('', include('social.apps.django_app.urls', namespace='social')),
-    url(r'^login/github', 'main.views.github_login'),
     url(r'^$', 'main.views.hello', name='committed_home'),
     url(r'^stats_app/', include('stats_app.urls')),
 )
