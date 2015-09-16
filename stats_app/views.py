@@ -1,63 +1,16 @@
-from stats_app.models import Repository, GithubUser
-from stats_app.serializers import RepositorySerializer, GithubUserSerializer
 from django.http import HttpResponse
-from django.views.decorators.csrf import csrf_exempt
-from rest_framework.renderers import JSONRenderer
-from rest_framework.parsers import JSONParser
+from social.apps.django_app.default.models import UserSocialAuth
+from stats_app.service import get_repository_list, get_commit_list
 
 
-class JSONResponse(HttpResponse):
-    """
-    An HttpResponse that renders its content into JSON.
-    """
-    def __init__(self, data, **kwargs):
-        content = JSONRenderer().render(data)
-        kwargs['content_type'] = 'application/json'
-        super(JSONResponse, self).__init__(content, **kwargs)
-
-
-@csrf_exempt
-def user_list(request):
-    """
-    List all users
-    """
+def stats(request):
     if request.method == 'GET':
-        users = GithubUser.objects.all()
-        serializer = GithubUserSerializer(users, many=True)
-        return JSONResponse(serializer.data)
-
-    elif request.method == 'POST':
-        data = JSONParser().parse(request)
-        serializer = GithubUserSerializer(data=data)
-        if serializer.is_valid():
-            serializer.save()
-            return JSONResponse(serializer.data, status=201)
-        return JSONResponse(serializer.errors, status=400)
+        instance = UserSocialAuth.objects.get(user=request.user, provider='github')
+        username = instance.extra_data['login']
+        token = instance.access_token # todo DO WE NEED?
+        repos = get_repository_list(username)
+        commits = get_commit_list(repos)
+        return HttpResponse(commits)
 
 
-@csrf_exempt
-def user_detail(request, pk):
-    """
-    Retrieve a user
-    """
-    try:
-        user = GithubUser.objects.get(pk=pk)
-    except user.DoesNotExist:
-        return HttpResponse(status=404)
-
-    if request.method == 'GET':
-        serializer = GithubUserSerializer(user)
-        return JSONResponse(serializer.data)
-
-    elif request.method == 'PUT':
-        data = JSONParser().parse(request)
-        serializer = GithubUserSerializer(user, data=data)
-        if serializer.is_valid():
-            serializer.save()
-            return JSONResponse(serializer.data)
-        return JSONResponse(serializer.errors, status=400)
-
-    elif request.method == 'DELETE':
-        user.delete()
-        return HttpResponse(status=204)
 

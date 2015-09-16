@@ -1,7 +1,7 @@
 from django.test import TestCase
 from stats_app.serializers import GithubUserSerializer, RepositorySerializer
 from stats_app.service import get_repository_list, get_user_token, get_commit_list
-from stats_app.models import GithubUser
+from social.apps.django_app.default.models import UserSocialAuth
 
 
 class GetTokenTestCase(TestCase):
@@ -15,23 +15,22 @@ class GetDataTestCase(TestCase):
     def setup(self):
         token = ""
 
-    # def test_get_repos_list(self):
-    #     repo_list = get_repository_list('ahelium')
-    #     return repo_list
+    def test_get_repos_list(self):
+        repo_list = get_repository_list('ahelium')
+        return repo_list
 
     def test_get_commit_list(self):
         repo_list = get_repository_list('ahelium')
-        print(get_commit_list(repo_list))
+        print(repo_list)
 
 
-class GetUserTestCase(TestCase):
+class GetSocialAuthUserTestCase(TestCase):
 
-    def make_test_user(self):
-        user = GithubUser(username='ahelium')
-        user.save()
-
-    def pull_user_information(self):
-        print(GithubUser.objects.all())
+    def test_get_user_fields(self):
+        user = UserSocialAuth.objects.get(pk=1)
+        token = user.extra_data['access_token']
+        login = user.extra_data['login']
+        print('user token:' + str(token) + 'user login:' + str(login))
 
 
 class SerializerTestCase(TestCase):
@@ -43,5 +42,7 @@ class SerializerTestCase(TestCase):
     def test_print_repo_serializer(self):
         serializer = RepositorySerializer()
         print(repr(serializer))
+
+
 
 
