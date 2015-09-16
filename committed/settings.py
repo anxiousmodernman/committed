@@ -24,6 +24,8 @@ INSTALLED_APPS = (
     'social.apps.django_app.default',
     'django_extensions',
     'main',
+    'stats_app',
+    'rest_framework',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -112,9 +114,5 @@ SOCIAL_AUTH_LOGIN_REDIRECT_URL = '/user/home/'
 
 LOGIN_URL = '/login'
 LOGIN_REDIRECT_URL = '/user/home/'
-
-
-
-
 
 
