@@ -1,5 +1,5 @@
 from django.test import TestCase
-from stats_app.serializers import GithubUserSerializer
+from stats_app.serializers import GithubUserSerializer, RepositorySerializer
 from stats_app.service import get_repository_list, get_user_token, get_commit_list
 from stats_app.models import GithubUser
 
@@ -36,8 +36,12 @@ class GetUserTestCase(TestCase):
 
 class SerializerTestCase(TestCase):
 
-    def test_print_serializer(self):
+    def test_print_user_serializer(self):
         serializer = GithubUserSerializer()
+        print(repr(serializer))
+
+    def test_print_repo_serializer(self):
+        serializer = RepositorySerializer()
         print(repr(serializer))
 
 
