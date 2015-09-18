@@ -30,4 +30,4 @@ pip install -r requirements.txt
 
 ### TODO
 
-Add ability to associate a regular django `User` instance with a `UserSocialAuth` instance created by the `python-social-auth` framework.
+

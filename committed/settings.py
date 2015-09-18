@@ -24,6 +24,7 @@ INSTALLED_APPS = (
     'social.apps.django_app.default',
     'django_extensions',
     'main',
+    'user',
     'stats_app',
     'rest_framework',
 )
@@ -112,7 +113,7 @@ FIELDS_STORED_IN_SESSION = ['access_token']
 
 SOCIAL_AUTH_LOGIN_REDIRECT_URL = '/user/home/'
 
-LOGIN_URL = '/login'
+LOGIN_URL = '/login'  # todo this isn't used
 LOGIN_REDIRECT_URL = '/user/home/'
 
 

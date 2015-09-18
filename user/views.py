@@ -1,8 +1,9 @@
 from django.http import HttpResponse
+from django.shortcuts import render
 
 
 def home(request):
-    return HttpResponse("You have successfully logged in somehow.")
+    return render(request, "user/home.html")
 
 
 def github_login_fail(request):
