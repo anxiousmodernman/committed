@@ -1,6 +1,6 @@
 from django.test import TestCase
 from stats_app.serializers import GithubUserSerializer, RepositorySerializer
-from stats_app.service import get_repository_list, get_user_token, get_commit_list
+from stats_app.service import get_repository_list, get_user_token, get_commit_df
 from social.apps.django_app.default.models import UserSocialAuth
 
 
@@ -21,7 +21,8 @@ class GetDataTestCase(TestCase):
 
     def test_get_commit_list(self):
         repo_list = get_repository_list('ahelium')
-        print(repo_list)
+        commit_df = get_commit_df(repo_list)
+        print(commit_df)
 
 
 class GetSocialAuthUserTestCase(TestCase):

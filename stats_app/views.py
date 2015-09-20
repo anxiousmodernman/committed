@@ -3,7 +3,7 @@ from django.shortcuts import render
 from social.apps.django_app.default.models import UserSocialAuth
 import json
 
-from stats_app.service import get_repository_list, get_commit_list
+from stats_app.service import get_repository_list, reshape_commit_data, get_commit_df
 
 TEST = True
 
@@ -14,13 +14,14 @@ def stats(request):
         username = instance.extra_data['login']
         token = instance.access_token  # todo DO WE NEED?
         if TEST:
-            with open('stats_app/commits_clean.json') as json_data:
+            with open('stats_app/commit_pivot.json') as json_data:
                 d = json.load(json_data)
             return HttpResponse(d)
         else:
             repos = get_repository_list(username)
-            commits = get_commit_list(repos)
-            return HttpResponse(commits)
+            commits = get_commit_df(repos)
+            commit_json = reshape_commit_data(commits)
+            return HttpResponse(commit_json) #todo figure out datetime in json
 
 
 def graph(request):
