@@ -28,6 +28,16 @@ Once you've activated the virtual environment, install the packages.
 pip install -r requirements.txt
 ```
 
-### TODO
+### Front End
+
+Reviewing the steps outlined here:
+
+```
+http://omarfouad.com/blog/2015/03/21/advanced-angularjs-structure-with-gulp-node-and-browserify/
+```
+
+
+
+
 
 

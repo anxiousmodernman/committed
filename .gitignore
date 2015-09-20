@@ -9,5 +9,10 @@
 __pycache__
 
 
+# front end libraries and build artifacts
+bundled.js
+node_modules
+
+
 # secrets
 secrets.json

@@ -2,41 +2,45 @@
 
 
 {% block content %}
-    <div>
-        <div class="row">
-            <h1>Your status is: <span>Good</span></h1>
-        </div>
-        <div class="row">
-            <div class="col-md-4">
-                <h2>All your repos</h2>
-                <ul>
-                    <li>repo one</li>
-                    <li>repo one</li>
-                    <li>repo one</li>
-                </ul>
+    {% verbatim %}
+    <div ng-app="app">
+        <div ng-controller="MainController">
+            <div class="row">
+                <h1>Your status is: {{ message }}</h1>
             </div>
-            <div class="col-md-8">
-                <table class="table">
-                    <tr>
-                        <th>Column 1</th>
-                        <th>Column 2</th>
-                    </tr>
-                    <tr>
-                        <td>Data data data</td>
-                        <td>Data data data</td>
-                    </tr>
-                    <tr>
-                        <td>Data data data</td>
-                        <td>Data data data</td>
-                    </tr>
-                    <tr>
-                        <td>Data data data</td>
-                        <td>Data data data</td>
-                    </tr>
-                </table>
+            <div class="row">
+                <div class="col-md-4">
+                    <h2>All your repos</h2>
+                    <ul>
+                        <li>repo one</li>
+                        <li>repo one</li>
+                        <li>repo one</li>
+                    </ul>
+                </div>
+                <div class="col-md-8">
+                    <table class="table">
+                        <tr>
+                            <th>Column 1</th>
+                            <th>Column 2</th>
+                        </tr>
+                        <tr>
+                            <td>Data data data</td>
+                            <td>Data data data</td>
+                        </tr>
+                        <tr>
+                            <td>Data data data</td>
+                            <td>Data data data</td>
+                        </tr>
+                        <tr>
+                            <td>Data data data</td>
+                            <td>Data data data</td>
+                        </tr>
+                    </table>
+                </div>
             </div>
-        </div>
 
+        </div>
     </div>
+    {% endverbatim %}
 
 {% endblock %}
