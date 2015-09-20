@@ -23,6 +23,7 @@
   "homepage": "https://github.com/anxiousmodernman/committed",
   "devDependencies": {
     "browserify": "^11.1.0",
+    "del": "^2.0.2",
     "gulp": "^3.9.0",
     "vinyl-source-stream": "^1.1.0"
   },
