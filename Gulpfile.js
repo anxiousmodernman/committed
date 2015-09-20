@@ -3,11 +3,20 @@ var gulp = require('gulp');
 var browserify = require('browserify');
 var source = require('vinyl-source-stream');
 
+var paths = {
+    jsSources: './static/js/**/*.js',  // any JS file in a subdir of /static/js
+    buildDir: './static/public/js/',
+    mainApp: './static/js/app.js'
+};
 
-gulp.task('build', function() {
-    return browserify('./static/js/app.js')
+gulp.task('build', function () {
+    return browserify(paths.mainApp)
         .bundle()
-        .pipe(source('bundled.js'))
-        .pipe(gulp.dest('./static/public/js/'));
+        .pipe(source('bundled.js'))  // Only one bundled file for now, but we might end up w/ multiple
+        .pipe(gulp.dest(paths.buildDir));
+});
+
+gulp.task('watch', function () {
+    gulp.watch(paths.jsSources, ['build'])
 });
 
