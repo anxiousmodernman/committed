@@ -2,13 +2,12 @@
 
 <!DOCTYPE html>
 <html>
-<head lang="en" ng-app="app">
+<head lang="en">
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <title>Committed - Get to work!</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
     <link rel="stylesheet" href="{% static 'styles.css' %}">
-    <script src="{% static 'public/js/bundled.js' %}"
 </head>
 <body>
 <div class="navbar navbar-default navbar-static-top">
@@ -39,5 +38,7 @@
     {% block content %}
     {% endblock %}
 </div>
+<script src="{% static 'public/js/bundled.js' %}"></script>
+
 </body>
 </html>
