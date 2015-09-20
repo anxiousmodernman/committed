@@ -1,0 +1,31 @@
+{% extends "global_base.html" %}
+
+{% block content %}
+
+
+    <div id=“cool-graph”></div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.5/d3.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/reqwest/2.0.3/reqwest.js"></script>
+    <script>
+        var myData;
+
+        function getData() {
+            var opts = {
+                url: '/stats_app/summary',
+                method: 'get',
+                success: function (response) {
+                    //debugger;
+                    myData = response.data;  // todo is "data" the data for real?
+                }
+            };
+            return reqwest(opts);
+        }
+
+        getData();
+
+        console.log('lol wow', myData);  // will probably be undefined because it executs 2 fast
+
+    </script>
+
+
+{% endblock %}

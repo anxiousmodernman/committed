@@ -9,7 +9,7 @@ def get_repository_list(username):
     req = requests.get(urljoin(GITHUB_API + 'users/', str(username) + '/repos'))
     repos_json = req.json()
     print(repos_json)
-    repo_dict = [{'username': username, 'repo': repo["name"]} for repo in repos_json]
+    repo_dict = [{'username': username, 'repo': repo["name"], 'created_at': repo["created_at"]} for repo in repos_json]
     print(repo_dict)
     return repo_dict
 
@@ -21,6 +21,12 @@ def get_repository_list_w_token(username, token): #todo figure out what this can
     repos_json = req_auth.json()
     repos = [{'username': username, 'repo': repo["name"]} for repo in repos_json]
     return repos
+
+# TEST = True
+#     if TEST:
+#         pass
+#     else:
+#         pass:
 
 
 def get_commit_list(repo_dict):
@@ -34,6 +40,9 @@ def get_commit_list(repo_dict):
     return commits
 
 
+
+
+# json.dumps(list())
 
 
 
