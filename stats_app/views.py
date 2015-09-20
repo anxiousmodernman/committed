@@ -2,6 +2,7 @@ from django.http import HttpResponse
 from django.shortcuts import render
 from social.apps.django_app.default.models import UserSocialAuth
 import json
+import pandas as pd
 
 from stats_app.service import get_repository_list, reshape_commit_data, get_commit_df
 
@@ -17,6 +18,9 @@ def stats(request):
             with open('stats_app/commit_pivot.json') as json_data:
                 d = json.load(json_data)
             return HttpResponse(d)
+        # if TEST_CSV:
+        #     d = pd.read_csv('commit_pivot.csv')
+        #     return HttpResponse(d)
         else:
             repos = get_repository_list(username)
             commits = get_commit_df(repos)
