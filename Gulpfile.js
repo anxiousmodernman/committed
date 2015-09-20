@@ -1,5 +1,4 @@
 var gulp = require('gulp');
-// requires browserify and vinyl-source-stream
 var browserify = require('browserify');
 var source = require('vinyl-source-stream');
 var del = require('del');
@@ -27,3 +26,5 @@ gulp.task('clean', function () {
     del(paths.publicDir)
 });
 
+// runs when gulp is executed with no args
+gulp.task('default', ['watch']);
