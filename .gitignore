@@ -9,5 +9,9 @@
 __pycache__
 
 
+# front end libraries
+node_modules
+
+
 # secrets
 secrets.json

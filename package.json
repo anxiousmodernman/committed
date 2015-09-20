@@ -1,0 +1,27 @@
+{
+  "name": "committed",
+  "version": "1.0.0",
+  "description": "Get to work.",
+  "main": "app.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/anxiousmodernman/committed.git"
+  },
+  "keywords": [
+    "git",
+    "stats",
+    "productivity"
+  ],
+  "author": "Coleman and Anna",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/anxiousmodernman/committed/issues"
+  },
+  "homepage": "https://github.com/anxiousmodernman/committed",
+  "devDependencies": {
+    "gulp": "^3.9.0"
+  }
+}
