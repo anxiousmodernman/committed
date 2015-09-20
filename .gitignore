@@ -9,7 +9,8 @@
 __pycache__
 
 
-# front end libraries
+# front end libraries and build artifacts
+bundled.js
 node_modules
 
 
